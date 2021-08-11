@@ -1,7 +1,7 @@
 # TelloDrone Face Tracking
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-The `TelloDrone_FaceTracking` application uses openCV face detection along with djitellopy library in order to move the DJI Tello drone using face detection
+The `TelloDrone_FaceTracking` application uses openCV face detection along with djitellopy library in order to move the DJI Tello drone by detecting any face movement
 
 <img src="images/icon.png" alt="Menu">
 
