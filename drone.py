@@ -10,25 +10,51 @@ class Drone:
     
    
     def getFrame(self):
+        """
+        getFrame gets video frame from the drone
+        :return: tello's frame read
+        """ 
         return self.tello.get_frame_read().frame
     def getVideo(self):
+        """
+        getVideo gets video capture from the drone
+        :return: tello's video
+        """ 
         return self.tello.get_video_capture()
     def getBattery(self):
+        """
+        getBattery gets battery percentage from the drone
+        :return: int value of percentage
+        """ 
         return self.tello.get_battery()
     
-    def getFlightTime(self):
-        return self.tello.get_flight_time()
-    
+        
     def getState(self):
+        """
+        getState gets current state of the drone
+        :return: state value of drone
+        """ 
         return self.tello.get_current_state()
 
     def first_tracking_position(self):
+        """
+        first_tracking_position allows the drone to takeoff and go up 80 cm
+        """ 
         self.tello.takeoff()
         self.tello.move_up(80)
      
             
 
     def adjust(self,x_faceCenter,y_faceCenter,x_center,y_center):
+
+        """
+        adjust function adjusts movement to center face image in the center 
+        :param x_faceCenter: int value of center of face x coordinate
+        :param y_faceCenter: int value of center of face y coordinate
+        :param x_center: int value of center of face x coordinate
+        :param y_center: int value of center of face y coordinate
+ 
+        """ 
        
         x_difference = x_faceCenter-x_center
         y_difference = y_faceCenter-y_center
@@ -49,23 +75,34 @@ class Drone:
             area_state ==False
 
         if not -120 <= x_difference <= 120 and x_state == True:
-            if x_difference < 0:
+            if x_difference > 0:
                 print("rotating counter clockwise")
                 self.tello.rotate_counter_clockwise(15)
-            elif x_difference > 0:
+            elif x_difference < 0:
                 print("rotating  clockwise")
                 self.tello.rotate_clockwise(15)
         
-       
-        if area < 70000:
-            self.tello.move_forward(80)
-            print("moving forward")
-        
+        if not 190000 <= x_difference <= 240000 and area_state == True:
+
+            if area >240000:
+                self.tello.move_back(10)
+                print("moving back 10")
+            elif area < 190000:
+                self.tello.move_forward(10)
+                print("moving forward 10")
+        if not -70 <= y_difference <= 70 and y_state == True:
+
+            if y_difference >0:
+                self.tello.move_down(20)
+                print("moving down 20")
+            elif y_difference < 0:
+                self.tello.move_up(20)
+                print("moving up 20")
          
-        elif area < 90000:
-            self.tello.move_forward(100)
-            print("moving forward")
-    
+            
+        
+
+    #closes the drone connection and lands it
     def close(self):
         self.tello.land()
         self.tello.end()
