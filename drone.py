@@ -40,8 +40,8 @@ class Drone:
         """
         first_tracking_position allows the drone to takeoff and go up 80 cm
         """ 
-        #self.tello.takeoff()
-        #self.tello.move_up(80)
+        self.tello.takeoff()
+        self.tello.move_up(80)
      
             
 
@@ -68,35 +68,35 @@ class Drone:
         area_state = True
 
         if(x_difference == 0):
-            x_state ==False
+            x_state = False
         if(y_difference == 0):
-            y_state ==False
+            y_state = False
         if(area == 0):
-            area_state ==False
+            area_state = False
 
         if not -120 <= x_difference <= 120 and x_state == True:
             if x_difference < 0:
                 print("rotating counter clockwise")
-                #self.tello.rotate_counter_clockwise(15)
+                self.tello.rotate_counter_clockwise(15)
             elif x_difference > 0:
                 print("rotating  clockwise")
-                #self.tello.rotate_clockwise(15)
+                self.tello.rotate_clockwise(15)
         
         if not 120000 <= area <= 140000 and area_state == True:
 
             if area <140000:
-                #self.tello.move_back(20)
+                self.tello.move_back(20)
                 print("moving back 20")
             elif area > 120000:
-                #self.tello.move_forward(20)
+                self.tello.move_forward(20)
                 print("moving forward 20")
         if not -70 <= y_difference <= 70 and y_state == True:
 
             if y_difference >0:
-                #self.tello.move_down(20)
+                self.tello.move_down(20)
                 print("moving down 20")
             elif y_difference < 0:
-                #self.tello.move_up(20)
+                self.tello.move_up(20)
                 print("moving up 20")
          
             
