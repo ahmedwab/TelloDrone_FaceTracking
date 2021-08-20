@@ -82,13 +82,13 @@ class Drone:
                 print("rotating  clockwise")
                 self.tello.rotate_clockwise(15)
         
-        if not 120000 <= area <= 140000 and area_state == True:
+        if not 90000 <= area <= 165000 and area_state == True:
 
-            if area <140000:
-                self.tello.move_back(20)
+            if area >200000:
+                self.tello.move_back(50)
                 print("moving back 20")
-            elif area > 120000:
-                self.tello.move_forward(20)
+            elif area < 90000:
+                self.tello.move_forward(50)
                 print("moving forward 20")
         if not -70 <= y_difference <= 70 and y_state == True:
 
