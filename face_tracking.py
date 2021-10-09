@@ -50,5 +50,7 @@ while True:
     if cv2.waitKey(1) == ord('q'):
         break
 
+#Closing the drone and all cv2 windows
+
 drone.close()
 cv2.destroyAllWindows()

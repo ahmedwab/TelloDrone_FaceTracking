@@ -2,6 +2,13 @@ from djitellopy import Tello
 
 
 class Drone:
+    '''
+    The class drone is intended to control the drone's visual and flight fucntionalities.
+    
+    Dependencies: this class is dependent on djitellopy SDK 
+
+    '''
+
 
     tello = Tello()
     def __init__(self):
